@@ -80,8 +80,9 @@ export class FlightSearchComponent implements OnInit, OnDestroy {
     this.flightsSubject.complete();
   }
 
-  onSelect(f: Flight): void {
-    this.selectedFlight = f;
+  onSelectToggle(flight: Flight) {
+    this.basket[flight.id] = !this.basket[flight.id];
+    this.selectedFlight = this.basket[flight.id] ? flight : null;
   }
 
   onSave(): void {
