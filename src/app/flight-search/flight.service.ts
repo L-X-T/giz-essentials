@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 
 import { Observable } from 'rxjs';
@@ -7,12 +7,10 @@ import { Flight } from '../entities/flight';
 
 @Injectable({ providedIn: 'root' })
 export class FlightService {
-  url = 'http://www.angular.at/api/flight';
-  // url = 'https://demo.angulararchitects.io/api/Flight';
-
-  headers = new HttpHeaders().set('Accept', 'application/json');
-
-  constructor(private http: HttpClient) {}
+  private readonly http = inject(HttpClient);
+  private readonly headers = new HttpHeaders().set('Accept', 'application/json');
+  private readonly url = 'http://www.angular.at/api/flight';
+  // private readonly url = 'https://demo.angulararchitects.io/api/Flight'; // if https is needed
 
   find(from: string, to: string): Observable<Flight[]> {
     const params = new HttpParams().set('from', from).set('to', to);
