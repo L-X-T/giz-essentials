@@ -2,7 +2,6 @@
   "printWidth": 140,
   "singleQuote": true,
   "trailingComma": "none",
-  "endOfLine": "auto",
   "overrides": [
     {
       "files": ["*.css"],
